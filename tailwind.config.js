@@ -6,6 +6,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors:{
+        'main': '#ff7cb4',
+        'secondary' : '#ffdddd'
+      },
       transitionProperty: {
         "width": "width",
         "spacing": 'margin, padding',

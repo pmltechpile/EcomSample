@@ -4,6 +4,8 @@ import { useFeaturedProductsQuery } from "@lib/hooks/use-layout-data"
 import UnderlineLink from "@modules/common/components/underline-link"
 import ProductPreview from "@modules/products/components/product-preview"
 import SkeletonProductPreview from "@modules/skeletons/components/skeleton-product-preview"
+import "react-responsive-carousel/lib/styles/carousel.min.css" // Import the carousel styles
+import { Carousel } from "react-responsive-carousel" // Import the Carousel component
 
 const FeaturedProducts = () => {
   const { data } = useFeaturedProductsQuery()
@@ -20,19 +22,31 @@ const FeaturedProducts = () => {
           </p>
           <UnderlineLink href="/store">Explore products</UnderlineLink>
         </div>
-        <ul className="grid grid-cols-2 small:grid-cols-4 gap-x-4 gap-y-8">
+        <Carousel
+          showArrows={false}
+          showStatus={false}
+          showIndicators={false}
+          showThumbs={false}
+          emulateTouch={true}
+          infiniteLoop={true}
+          autoPlay
+          centerMode={true}
+          centerSlidePercentage={50}
+          className="w-full"
+          interval={5000}
+        >
           {data
             ? data.map((product) => (
-                <li key={product.id}>
+                <div key={product.id} className="border rounded-xl">
                   <ProductPreview {...product} />
-                </li>
+                </div>
               ))
-            : Array.from(Array(4).keys()).map((i) => (
-                <li key={i}>
+            : Array.from(Array(4).keys()).map((_, i) => (
+                <div key={i}>
                   <SkeletonProductPreview />
-                </li>
+                </div>
               ))}
-        </ul>
+        </Carousel>
       </div>
     </div>
   )
