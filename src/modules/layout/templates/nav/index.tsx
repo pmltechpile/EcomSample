@@ -10,13 +10,13 @@ import clsx from "clsx"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
+import Image from "next/image"
 
 const Nav = () => {
   const pathname = usePathname()
   const [isHome, setIsHome] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
-  //useEffect that detects if window is scrolled > 5px on the Y axis
   useEffect(() => {
     if (isHome) {
       const detectScrollY = () => {
@@ -49,9 +49,9 @@ const Nav = () => {
     >
       <header
         className={clsx(
-          "relative h-16 px-8 mx-auto transition-colors bg-transparent border-b border-transparent duration-200 group-hover:bg-white group-hover:border-gray-200",
+          "relative h-28 px-8 mx-auto transition-colors bg-transparent border-b border-transparent duration-200 group-hover:bg-white group-hover:border-gray-200",
           {
-            "!bg-white !border-gray-200": !isHome || isScrolled,
+            "!bg-secondary !border-gray-200": !isHome || isScrolled,
           }
         )}
       >
@@ -59,7 +59,7 @@ const Nav = () => {
           className={clsx(
             "text-gray-900 flex items-center justify-between w-full h-full text-small-regular transition-colors duration-200",
             {
-              "text-white group-hover:text-gray-900": isHome && !isScrolled,
+              "text-secondary group-hover:text-gray-900": isHome && !isScrolled,
             }
           )}
         >
@@ -72,9 +72,19 @@ const Nav = () => {
             </div>
           </div>
 
-          <div className="flex items-center h-full">
-            <Link href="/" className="text-xl-semi uppercase">
-              Acme
+          <div className="flex items-center justify-center h-12 flex-1 basis-0 pt-2">
+            <Link href="/" >
+              <Image
+                src="/ProtegidaLogo2.png"
+                loading="eager"
+                priority={true}
+                quality={90}
+                alt="Photo by @thevoncomplex https://unsplash.com/@thevoncomplex"
+                className="items-center max-h-full"
+                draggable="false"
+                width={350}
+                height={150}
+              />
             </Link>
           </div>
 

@@ -16,9 +16,13 @@ export default async function medusaRequest(
     headers: {
       "Content-Type": "application/json",
       "x-publishable-key": MEDUSA_API_KEY,
+      // "CF-Access-Client-Id": "3df2dfc111c933273a68c1d43fa614a4.access",
+      // "CF-Access-Client-Secret":
+      //   "bcedb6781e91cd91614420ccb8c2bb6e4968f3813f24798d24fd479a58fca24a",
     },
     next: { revalidate: parseInt(REVALIDATE_WINDOW) },
   }
+  console.log(options.headers)
 
   if (payload) {
     if ("body" in payload) {
