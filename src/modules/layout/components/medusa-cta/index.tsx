@@ -4,7 +4,7 @@ const MedusaCTA = () => {
       <div className="content-container flex justify-center flex-1">
         <a href="https://www.pmltechpile.com" target="_blank" rel="noreferrer">
           {/* <PoweredBy /> */}
-          Provided by PMLTECH LLC
+          Powered by PMLTECH LLC
         </a>
       </div>
     </div>
